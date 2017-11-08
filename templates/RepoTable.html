@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <title>Github Navigation</title>
+</head>
+<body>
+  <h2>Python Github Projects</h2>
+ 
+  {% for row in repo %}
+  <div class="panel-group" id="{{ row.id }}">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#{{ row.id }}" href="#{{ row.name }}">{{ row.name }}</a>
+        </h4>
+      </div>
+      <div id="{{ row.name }}" class="panel-collapse collapse in">
+        <div class="panel-body">
+	  <p>Description: {{ row.description }}</p>
+	  <p>URL: {{ row.url }}</p>
+	  <p>Created Date: {{ row.created_date }}</p>
+	  <p>Last Push: {{ row.last_push }}</p>
+	  <p>Stars: {{ row.stars }}</p> 
+	</div>
+      </div>
+    </div>
+ </div>
+<script type="text/javascript">
+	$(".collapse").collapse();
+	$('#{{ row.id }}').collapse({hide: true})
+</script>
+{% endfor %}
+</body>
+</html>
